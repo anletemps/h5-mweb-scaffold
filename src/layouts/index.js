@@ -1,30 +1,32 @@
-import React, { Component } from 'react'
+import React from 'react';
 import BaseLayout from './baseLayout';
+import PropTypes from 'prop-types';
 
 const ULR_NO_LAYOUT = ['/', '/home', '/class', '/my'];
 
-class Index extends Component {
-  componentDidMount() {
-  }
-  renderBody = () => {
-    const {location: {pathname}, children } = this.props;
-    if (ULR_NO_LAYOUT.includes(pathname)) {
-      return  (<BaseLayout {...this.props} />);
-    }
-    return (
-      <React.Fragment>
-        {children}
-      </React.Fragment>
-    );
-  }
+const Index = (props) => {
+    const renderBody = () => {
+        const { location: { pathname }, children } = props;
+        if (ULR_NO_LAYOUT.includes(pathname)) {
+            return (<BaseLayout {...props} />);
+        }
+        return (
+            <React.Fragment>
+                {children}
+            </React.Fragment>
+        );
+    };
 
-  render() {
     return (
-      <React.Fragment>
-        {this.renderBody()}
-      </React.Fragment>
-    )
-  }
-}
+        <React.Fragment>
+            {renderBody()}
+        </React.Fragment>
+    );
+};
+
+Index.propTypes = {
+    location: PropTypes.object.isRequired,
+    children: PropTypes.node
+};
 
 export default Index;

@@ -1,6 +1,5 @@
-import proxyRequest from 'utils/request';
-import { baseUrl } from '@/utils/baseServer';
+import proxyRequest from 'Utils/request';
 
 export async function reg(params) {
-  return proxyRequest.get('/api/home', params);
+    return proxyRequest.get('/api/home', params);
 }
